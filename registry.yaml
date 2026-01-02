@@ -1,2 +1,95 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
+  - type: github_release
+    repo_owner: WebAssembly
+    repo_name: binaryen
+    description: Optimizer and compiler/toolchain library for WebAssembly
+    asset: binaryen-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+    format: tar.gz
+    overrides:
+      - goos: linux
+        replacements:
+          arm64: aarch64
+    replacements:
+      amd64: x86_64
+      darwin: macos
+    checksum:
+      type: github_release
+      asset: "{{.Asset}}.sha256"
+      algorithm: sha256
+    files:
+      - name: wasm2js
+        src: binaryen-{{.Version}}/bin/wasm2js
+      - name: wasm-as
+        src: binaryen-{{.Version}}/bin/wasm-as
+      - name: wasm-ctor-eval
+        src: binaryen-{{.Version}}/bin/wasm-ctor-eval
+      - name: wasm-dis
+        src: binaryen-{{.Version}}/bin/wasm-dis
+      - name: wasm-emscripten-finalize
+        src: binaryen-{{.Version}}/bin/wasm-emscripten-finalize
+      - name: wasm-fuzz-lattices
+        src: binaryen-{{.Version}}/bin/wasm-fuzz-lattices
+      - name: wasm-fuzz-types
+        src: binaryen-{{.Version}}/bin/wasm-fuzz-types
+      - name: wasm-merge
+        src: binaryen-{{.Version}}/bin/wasm-merge
+      - name: wasm-metadce
+        src: binaryen-{{.Version}}/bin/wasm-metadce
+      - name: wasm-opt
+        src: binaryen-{{.Version}}/bin/wasm-opt
+      - name: wasm-reduce
+        src: binaryen-{{.Version}}/bin/wasm-reduce
+      - name: wasm-shell
+        src: binaryen-{{.Version}}/bin/wasm-shell
+      - name: wasm-shell
+        src: binaryen-{{.Version}}/bin/wasm-shell
+      - name: wasm-split
+        src: binaryen-{{.Version}}/bin/wasm-split
+  - type: github_release
+    repo_owner: WebAssembly
+    repo_name: wabt
+    description: The WebAssembly Binary Toolkit
+    asset: wabt-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+    format: tar.gz
+    windows_arm_emulation: true
+    overrides:
+      - goos: darwin
+        replacements:
+          amd64: amd64
+    replacements:
+      amd64: x64
+      darwin: macos
+    supported_envs:
+      - linux
+      - darwin/arm64
+      - windows/amd64
+    checksum:
+      type: github_release
+      asset: "{{.Asset}}.sha256"
+      algorithm: sha256
+    files:
+      - name: spectest-interp
+        src: wabt-{{.Version}}/bin/spectest-interp
+      - name: wasm2c
+        src: wabt-{{.Version}}/bin/wasm2c
+      - name: wasm2wat
+        src: wabt-{{.Version}}/bin/wasm2wat
+      - name: wasm-decompile
+        src: wabt-{{.Version}}/bin/wasm-decompile
+      - name: wasm-interp
+        src: wabt-{{.Version}}/bin/wasm-interp
+      - name: wasm-objdump
+        src: wabt-{{.Version}}/bin/wasm-objdump
+      - name: wasm-stats
+        src: wabt-{{.Version}}/bin/wasm-stats
+      - name: wasm-strip
+        src: wabt-{{.Version}}/bin/wasm-strip
+      - name: wasm-validate
+        src: wabt-{{.Version}}/bin/wasm-validate
+      - name: wast2json
+        src: wabt-{{.Version}}/bin/wast2json
+      - name: wat2wasm
+        src: wabt-{{.Version}}/bin/wat2wasm
+      - name: wat-desugar
+        src: wabt-{{.Version}}/bin/wat-desugar
