@@ -93,3 +93,21 @@ packages:
         src: wabt-{{.Version}}/bin/wat2wasm
       - name: wat-desugar
         src: wabt-{{.Version}}/bin/wat-desugar
+  - type: github_release
+    repo_owner: "0x5341"
+    repo_name: dv
+    description: dev manager with vibe-kanban
+    asset: dv_{{.OS}}_{{.Arch}}.{{.Format}}
+    format: tar.gz
+    overrides:
+      - goos: windows
+        format: zip
+    replacements:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256

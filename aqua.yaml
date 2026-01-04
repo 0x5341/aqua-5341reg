@@ -18,3 +18,5 @@ packages:
     registry: local
   - name: WebAssembly/wabt@1.0.39
     registry: local
+  - name: 0x5341/dv@v0.1.0
+    registry: local
